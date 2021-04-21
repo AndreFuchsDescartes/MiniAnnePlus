@@ -1,10 +1,69 @@
 #include <Arduino.h>
+//____________VARIABLES____________________________________________________
 
+
+//#### Chest-Compression ####
+
+//#### Eyes ####
+
+//#### Heart ####
+
+//#### Lungs ####
+
+//#### Speech ####
+
+//#### Other ####
+
+
+
+//____________FUNCTIONS____________________________________________________
+
+//#### Chest-Compression ####
+
+//#### Eyes ####
+
+//#### Heart ####
+
+//#### Lungs ####
+
+//#### Speech ####
+
+//#### Other ####
+
+
+
+
+//____________SETUP________________________________________________________
 void setup() {
-  //test
-  // put your setup code here, to run once:
+//#### Chest-Compression ####
+
+//#### Eyes ####
+
+//#### Heart ####
+
+//#### Lungs ####
+
+//#### Speech ####
+
+//#### Other ####
+
 }
 
+
+//____________LOOP________________________________________________________
 void loop() {
-  // put your main code here, to run repeatedly:
+//#### Chest-Compression ####
+
+//#### Eyes ####
+
+//#### Heart ####
+
+//#### Lungs ####
+
+//#### Speech ####
+
+//#### Other ####
 }
+
+//____________DEVELOPER NOTES_____________________________________________
+//
