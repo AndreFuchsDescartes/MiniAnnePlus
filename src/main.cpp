@@ -1,36 +1,9 @@
 #include <Arduino.h>
-//____________VARIABLES____________________________________________________
-
-
-//#### Chest-Compression ####
-
-//#### Eyes ####
-
-//#### Heart ####
-
-//#### Lungs ####
-
-//#### Speech ####
-
-//#### Other ####
-
-
-
-//____________FUNCTIONS____________________________________________________
-
-//#### Chest-Compression ####
-
-//#### Eyes ####
-
-//#### Heart ####
-
-//#### Lungs ####
-
-//#### Speech ####
-
-//#### Other ####
-
-
+#include <ChestCompression.h>
+#include <Eyes.h>
+#include <Heart.h>
+#include <Lungs.h>
+#include <Speech.h>
 
 
 //____________SETUP________________________________________________________
