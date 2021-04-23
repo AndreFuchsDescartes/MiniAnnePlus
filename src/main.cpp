@@ -5,7 +5,6 @@
 #include <Lungs.h>
 #include <Speech.h>
 
-#define ldpin 2
 
 //____________SETUP________________________________________________________
 void setup() {
@@ -20,7 +19,7 @@ void setup() {
 //#### Speech ####
 
 //#### Other ####
-
+pinMode(LED_BUILTIN,OUTPUT);
 
 }
 
@@ -38,6 +37,11 @@ void loop() {
 //#### Speech ####
 
 //#### Other ####
+ digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(250);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(250);  
+
 }
 
 //____________DEVELOPER NOTES_____________________________________________
