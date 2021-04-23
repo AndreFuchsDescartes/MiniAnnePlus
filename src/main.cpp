@@ -5,6 +5,7 @@
 #include <Lungs.h>
 #include <Speech.h>
 
+#define ldpin 2
 
 //____________SETUP________________________________________________________
 void setup() {
@@ -19,6 +20,7 @@ void setup() {
 //#### Speech ####
 
 //#### Other ####
+
 
 }
 
