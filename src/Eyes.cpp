@@ -3,8 +3,6 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Eyes.h>
-
-//constructor for eye-object, takes a display-object and uses it as a reference for all functions
  Eye:: Eye(Adafruit_SSD1306 display)
   {
     this->x_position = display.width() / 2;
@@ -25,7 +23,6 @@
     }
   }
 
-//change pupilsize from its old size (initially 0) to the input size
  void Eye::changePupilSize(int new_pupilsize)
   {
     int t = 100;
@@ -52,9 +49,20 @@
     }
     pupilsize = new_pupilsize;
   }
-//setup for Eye-object containing both the display.begin function, as well as display.clear, invert, and iris-drawing function
+void Eye::reactToLight(){
+  //read value from lightsensor
+  int lightvalue = analogRead(lightsensor_pin);
+  //if light is brighter than defined threshhold, change pupilsize
+  if(lightvalue < lightvalue_threshhold){
+  this->changePupilSize(pupilsize_withlight);
+  }else{
+  this->changePupilSize(pupilsize_nolight);
+  }
+}
+
 void Eye::eyeSetup()
   {
+    pinMode(lightsensor_pin,INPUT);
     Serial.begin(9600);
     Serial.println("begin setup");
     if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))

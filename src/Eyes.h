@@ -16,12 +16,21 @@ private:
   int iris_inner_diameter;
   int pupilsize;
 
+  
+  int lightsensor_pin = A0;
+  //the lower the value, the brighter the light
+  int lightvalue_threshhold=300;
+  int pupilsize_withlight = 5;
+  int pupilsize_nolight = 15;
+
 public:
   Eye(Adafruit_SSD1306 display);
 
   void drawIris(int irisOuter_D, int irisInner_D);
 
   void changePupilSize(int new_pupilsize);
+
+  void reactToLight();
 
   void eyeSetup();
 };
