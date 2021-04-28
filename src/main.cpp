@@ -16,6 +16,10 @@ void setup() {
 
 //#### Lungs ####
 
+//saving current millis to use in timestamping of lung sensor data
+lung_millis_old = millis();
+
+
 //#### Speech ####
 
 //#### Other ####
