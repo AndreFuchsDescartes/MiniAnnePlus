@@ -5,6 +5,7 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <Pinout.h>
 
 class Eye
 {
@@ -17,7 +18,9 @@ private:
   int pupilsize;
 
   
-  int lightsensor_pin = A0;
+
+ int lightsensor_left = lightsensor_pin_left;
+ 
   //the lower the value, the brighter the light
   int lightvalue_threshhold=300;
   int pupilsize_withlight = 5;

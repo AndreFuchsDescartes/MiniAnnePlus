@@ -51,7 +51,7 @@
   }
 void Eye::reactToLight(){
   //read value from lightsensor
-  int lightvalue = analogRead(lightsensor_pin);
+  int lightvalue = analogRead(lightsensor_left);
   //if light is brighter than defined threshhold, change pupilsize
   if(lightvalue < lightvalue_threshhold){
   this->changePupilSize(pupilsize_withlight);
@@ -62,7 +62,7 @@ void Eye::reactToLight(){
 
 void Eye::eyeSetup()
   {
-    pinMode(lightsensor_pin,INPUT);
+    pinMode(lightsensor_left,INPUT);
     Serial.begin(9600);
     Serial.println("begin setup");
     if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
