@@ -26,7 +26,7 @@
  void Eye::changePupilSize(int new_pupilsize)
   {
     int t = 100;
-    //compare pupilsizes to see, if it becames larger or smaller
+    //compare pupilsizes to see, if it becomes larger or smaller
     if (new_pupilsize > pupilsize)
     {
       //larger
@@ -63,7 +63,7 @@ void Eye::reactToLight(){
 void Eye::eyeSetup()
   {
     pinMode(lightsensor_left,INPUT);
-    Serial.begin(9600);
+    //Serial.begin(9600);
     Serial.println("begin setup");
     if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
     {

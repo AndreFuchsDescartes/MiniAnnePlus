@@ -8,6 +8,7 @@
 
 //____________SETUP________________________________________________________
 void setup() {
+  Serial.begin(9600);
 //#### Chest-Compression ####
 
 //#### Eyes ####
@@ -16,14 +17,13 @@ void setup() {
 
 //#### Lungs ####
 
-//saving current millis to use in timestamping of lung sensor data
-lung_millis_old = millis();
+lungs_setup();
 
 
 //#### Speech ####
 
-//#### Other ####
-pinMode(LED_BUILTIN,OUTPUT);
+
+
 
 }
 
@@ -37,14 +37,10 @@ void loop() {
 //#### Heart ####
 
 //#### Lungs ####
+measure_ventilation();
 
 //#### Speech ####
 
-//#### Other ####
- digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(250);                       // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-  delay(250);  
 
 }
 
