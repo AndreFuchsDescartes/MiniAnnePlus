@@ -8,9 +8,9 @@
 //#### Lungs ####
 
 //Input pin to read analog voltage from lung sensor in chest
-#define lung_inflation_input_pin A0;
+#define lung_inflation_input_pin A1;
 //Input pin to read analog voltage from ventilation sensor in face
-#define ventilation_input_pin A1;
+#define ventilation_input_pin A0;
 
 //#### Speech ####
 #define mp3Player_rx 11

@@ -8,10 +8,11 @@
 Adafruit_SSD1306 display1(128, 64, &Wire, -1);
 Eye eye_left(display1);
 
+Lungs lung;
 
 //____________SETUP________________________________________________________
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 //#### Chest-Compression ####
 
 //#### Eyes ####
@@ -21,7 +22,7 @@ void setup() {
 
 //#### Lungs ####
 
-lungs_setup();
+lung.setup();
 
 
 //#### Speech ####
@@ -42,7 +43,7 @@ eye_left.reactToLight();
 //#### Heart ####
 
 //#### Lungs ####
-measure_ventilation();
+lung.log_ventilation();
 
 //#### Speech ####
 
