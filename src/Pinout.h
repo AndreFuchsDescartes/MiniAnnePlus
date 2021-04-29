@@ -13,3 +13,5 @@
 #define ventilation_input_pin A1;
 
 //#### Speech ####
+#define mp3Player_rx 11
+#define mpPlayer_tx 10

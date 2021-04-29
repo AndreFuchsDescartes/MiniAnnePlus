@@ -5,6 +5,9 @@
 #include <Lungs.h>
 #include <Speech.h>
 
+Adafruit_SSD1306 display1(128, 64, &Wire, -1);
+Eye eye_left(display1);
+
 
 //____________SETUP________________________________________________________
 void setup() {
@@ -12,6 +15,7 @@ void setup() {
 //#### Chest-Compression ####
 
 //#### Eyes ####
+ eye_left.eyeSetup();
 
 //#### Heart ####
 
@@ -33,6 +37,7 @@ void loop() {
 //#### Chest-Compression ####
 
 //#### Eyes ####
+eye_left.reactToLight();
 
 //#### Heart ####
 
@@ -45,4 +50,4 @@ measure_ventilation();
 }
 
 //____________DEVELOPER NOTES_____________________________________________
-//
+//!!! MP3 Player: rx and tx wires crossed

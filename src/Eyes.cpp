@@ -23,7 +23,7 @@
     }
   }
 
- void Eye::changePupilSize(int new_pupilsize)
+ /*void Eye::changePupilSize(int new_pupilsize)
   {
     int t = 100;
     //compare pupilsizes to see, if it becomes larger or smaller
@@ -48,7 +48,29 @@
       }
     }
     pupilsize = new_pupilsize;
-  }
+  }*/
+
+void Eye::changePupilSize(int new_pupilsize){
+  int time_trigger = 100;//s
+  if (new_pupilsize > pupilsize){
+    //make larger
+    if (millis()-timestamp > time_trigger && pupilsize < new_pupilsize){
+      timestamp = millis();
+      
+      display.drawCircle(x_position, y_position, pupilsize, WHITE);
+      display.display();this->pupilsize++;
+    } 
+  }else{
+    //make smaller
+    if (millis()-timestamp > time_trigger && pupilsize > new_pupilsize){
+      timestamp = millis();
+      
+      display.drawCircle(x_position, y_position, pupilsize, BLACK);
+      display.display();this->pupilsize--;
+    }
+  }   
+}
+
 void Eye::reactToLight(){
   //read value from lightsensor
   int lightvalue = analogRead(lightsensor_left);
@@ -64,7 +86,7 @@ void Eye::eyeSetup()
   {
     pinMode(lightsensor_left,INPUT);
     //Serial.begin(9600);
-    Serial.println("begin setup");
+    //Serial.println("begin setup");
     if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
     {
       Serial.println(F("SSD1306 allocation failed"));

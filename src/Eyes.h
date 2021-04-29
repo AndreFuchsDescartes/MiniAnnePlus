@@ -17,7 +17,8 @@ private:
   int iris_inner_diameter;
   int pupilsize;
 
-  
+  int timestamp=0;
+  int pupilposition=0;
 
  int lightsensor_left = lightsensor_pin_left;
  
@@ -32,6 +33,8 @@ public:
   void drawIris(int irisOuter_D, int irisInner_D);
 
   void changePupilSize(int new_pupilsize);
+
+  //void changePupilSize2(int new_pupilsize);
 
   void reactToLight();
 
