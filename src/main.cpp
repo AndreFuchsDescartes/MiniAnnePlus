@@ -7,6 +7,7 @@
 
 Adafruit_SSD1306 display1(128, 64, &Wire, -1);
 Eye eye_left(display1);
+Position_recognition_hand positionWatch;
 
 Lungs lung;
 
@@ -19,7 +20,7 @@ void setup() {
  eye_left.eyeSetup();
 
 //#### Heart ####
-
+positionWatch.init();
 //#### Lungs ####
 
 lung.setup();
@@ -41,7 +42,7 @@ void loop() {
 eye_left.reactToLight();
 
 //#### Heart ####
-
+positionWatch.log_positionQuality();
 //#### Lungs ####
 lung.log_ventilation();
 

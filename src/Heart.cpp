@@ -5,7 +5,7 @@
 Position_recognition_hand::Position_recognition_hand()
 {
 }
-
+//compares the signals of the 2 sensors and returns true if both are HIGH
 bool Position_recognition_hand::compare_sensorsignals()
 {
     bool control_result = false;
@@ -21,6 +21,7 @@ bool Position_recognition_hand::compare_sensorsignals()
     return control_result;
 }
 
+// calulates the average of an array, used to smooth out the signal
 int Position_recognition_hand::rolling_average()
 {
     int average = 0;
@@ -48,23 +49,27 @@ void Position_recognition_hand::save_handPosition(bool datapoint){
     
 }
 
-//function to measure ventilation. Sends data to RPie via USB after each read. Reads are taken according to lung_timestepp
-void Position_recognition_hand::log_ventilation (){
-    lung_millis_new = millis();
-    if (lung_millis_new - lung_millis_old>= lung_timestepp)
+//function to evaluate hand position. Sends data to RPie via USB after each read. Reads are taken according to handPosition_timestepp
+void Position_recognition_hand::log_positionQuality (){
+    handPosition_millis_new = millis();
+    if (handPosition_millis_new - handPosition_millis_old>= handPosition_timestepp)
     {
         
        bool result = compare_sensorsignals();
        save_handPosition(result);
       
-        Serial.print("inflation average: ");   
+        Serial.print("Position average: ");   
         Serial.println(rolling_average());
        
-        lung_millis_old=lung_millis_new;
+        handPosition_millis_old=handPosition_millis_new;
 
         
     }
-    else{
+}
 
-    }
+//init function to setup pins in void setup()
+void Position_recognition_hand::init(){
+    pinMode(pin_sensor1,INPUT);
+    pinMode(pin_sensor2,INPUT);
+
 }
