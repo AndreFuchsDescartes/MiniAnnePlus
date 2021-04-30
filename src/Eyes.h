@@ -7,6 +7,11 @@
 #include <Adafruit_SSD1306.h>
 #include <Pinout.h>
 
+//the lower the value, the brighter the light
+#define lightvalue_threshhold 300
+#define pupilsize_withlight 5
+#define pupilsize_nolight 15;
+
 class Eye
 {
 private:
@@ -21,11 +26,6 @@ private:
   int pupilposition=0;
 
  int lightsensor_left = lightsensor_pin_left;
- 
-  //the lower the value, the brighter the light
-  int lightvalue_threshhold=300;
-  int pupilsize_withlight = 5;
-  int pupilsize_nolight = 15;
 
 public:
   Eye(Adafruit_SSD1306 display);
