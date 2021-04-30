@@ -10,7 +10,7 @@
 //the lower the value, the brighter the light
 #define lightvalue_threshhold 300
 #define pupilsize_withlight 5
-#define pupilsize_nolight 15;
+#define pupilsize_nolight 15
 
 class Eye
 {
