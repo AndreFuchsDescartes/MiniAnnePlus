@@ -4,7 +4,8 @@
 #define lightsensor_pin_left A2;
 #define lightsensor_pin_right A3;
 //#### Heart ####
-
+#define position_recognition_hand_pin1 7
+#define position_recognition_hand_pin2 8
 //#### Lungs ####
 
 //Input pin to read analog voltage from lung sensor in chest
@@ -14,4 +15,4 @@
 
 //#### Speech ####
 #define mp3Player_rx 11
-#define mpPlayer_tx 10
+#define mpPlayer_tx 10  
