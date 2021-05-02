@@ -37,7 +37,7 @@ Position_recognition_hand();
 bool compare_sensorsignals();
 
 // calulates the average of an array, used to smooth out the signal
-int rolling_average();
+int hand_rolling_average();
 
 //used to save sensor reading from hand position quality to handPosition_quality array to calculate rolling average
 void save_handPosition(bool datapoint);

@@ -22,7 +22,7 @@ bool Position_recognition_hand::compare_sensorsignals()
 }
 
 // calulates the average of an array, used to smooth out the signal
-int Position_recognition_hand::rolling_average()
+int Position_recognition_hand::hand_rolling_average()
 {
     int average = 0;
     for (int i = 0; i < handPosition_no_of_measurements; i++)
@@ -59,7 +59,7 @@ void Position_recognition_hand::log_positionQuality (){
        save_handPosition(result);
       
         Serial.print("Position average: ");   
-        Serial.println(rolling_average());
+        Serial.println(hand_rolling_average());
        
         handPosition_millis_old=handPosition_millis_new;
 
