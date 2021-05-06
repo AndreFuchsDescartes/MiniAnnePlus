@@ -5,12 +5,16 @@
 #include <Lungs.h>
 #include <Speech.h>
 
+
+//#### Eyes ####
 Adafruit_SSD1306 display1(128, 64, &Wire, -1);
 Eye eye_left(display1);
 Position_recognition_hand positionWatch;
 Speech speaker;
 
+//#### Lungs ####
 Lungs lung;
+
 
 //____________SETUP________________________________________________________
 void setup() {
@@ -31,7 +35,6 @@ lung.setup();
 speaker.init();
 
 
-
 }
 
 
@@ -43,14 +46,13 @@ void loop() {
 eye_left.reactToLight();
 
 //#### Heart ####
-positionWatch.log_positionQuality();
+//positionWatch.log_positionQuality();
 //#### Lungs ####
-lung.log_ventilation();
+lung.log_inflation();
 
 //#### Speech ####
 speaker.play(2,120000);
 
+
 }
 
-//____________DEVELOPER NOTES_____________________________________________
-//!!! MP3 Player: rx and tx wires crossed
