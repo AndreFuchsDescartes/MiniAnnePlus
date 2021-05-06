@@ -1,5 +1,7 @@
 #ifndef Pinout_h
 #define Pinout_h
+
+#define baudrate 115200
 //#### Chest-Compression ####
 
 //#### Eyes ####
@@ -17,6 +19,6 @@
 
 //#### Speech ####
 #define mp3Player_rx 11
-#define mpPlayer_tx 10  
+#define mp3Player_tx 10  
 
 #endif

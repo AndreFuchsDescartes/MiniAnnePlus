@@ -1,22 +1,28 @@
-#ifdef Speech_h
+#ifndef Speech_h
 #define Speech_h
-class Speech
-{
-private:
-    int breathing_file_1
-    int rickroll = 1;
-    int coconut = 2;
-public:
-    Speech(/* args */);
-    ~Speech();
+#include <Arduino.h>
+#include <Pinout.h>
+#include <SoftwareSerial.h>
+#include <DFRobotDFPlayerMini.h>
+
+
+#define speach_volume 23
+
+//audiotrack list
+#define track_rickroll 1
+
+class Speech{
+    private:
+    DFRobotDFPlayerMini mp3Player;
+    //SoftwareSerial myoftwareSerial(mp3Player_rx, mp3Player_tx); // RX, TX  
+    
+
+    int timestamp = 0;
+
+    public:
+    int track;
+    Speech();
+    void play(int track, int duration);
+    void init();
 };
-
-Speech::Speech(/* args */)
-{
-}
-
-Speech::~Speech()
-{
-}
-
 #endif

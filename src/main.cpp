@@ -8,12 +8,13 @@
 Adafruit_SSD1306 display1(128, 64, &Wire, -1);
 Eye eye_left(display1);
 Position_recognition_hand positionWatch;
+Speech speaker;
 
 Lungs lung;
 
 //____________SETUP________________________________________________________
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(baudrate);
 //#### Chest-Compression ####
 
 //#### Eyes ####
@@ -27,7 +28,7 @@ lung.setup();
 
 
 //#### Speech ####
-
+speaker.init();
 
 
 
@@ -47,7 +48,7 @@ positionWatch.log_positionQuality();
 lung.log_ventilation();
 
 //#### Speech ####
-
+speaker.play(2,120000);
 
 }
 
