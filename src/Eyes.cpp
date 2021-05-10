@@ -3,7 +3,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Eyes.h>
- Eye:: Eye(Adafruit_SSD1306 display)
+ Eye:: Eye(Adafruit_SSD1306 display, int adress)
   {
     this->x_position = display.width() / 2;
     this->y_position = display.height() / 2;
@@ -11,6 +11,7 @@
     this->iris_inner_diameter = iris_outer_diameter - 5;
     this->pupilsize = 0;
     this->display = display;
+    this->i2cAdress=adress;
   }
 
   void Eye::drawIris(int irisOuter_D, int irisInner_D)
@@ -87,7 +88,7 @@ void Eye::eyeSetup()
     pinMode(lightsensor_left,INPUT);
     //Serial.begin(9600);
     //Serial.println("begin setup");
-    if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
+    if (!display.begin(SSD1306_SWITCHCAPVCC, this->i2cAdress))
     {
       Serial.println(F("SSD1306 allocation failed"));
       for (;;)

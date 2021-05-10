@@ -21,6 +21,7 @@ private:
   int iris_outer_diameter;
   int iris_inner_diameter;
   int pupilsize;
+  int i2cAdress;
 
   int timestamp=0;
   int pupilposition=0;
@@ -28,7 +29,7 @@ private:
  int lightsensor_left = lightsensor_pin_left;
 
 public:
-  Eye(Adafruit_SSD1306 display);
+  Eye(Adafruit_SSD1306 display, int adress);
 
   void drawIris(int irisOuter_D, int irisInner_D);
 

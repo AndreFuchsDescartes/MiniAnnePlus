@@ -8,7 +8,7 @@
 
 //#### Eyes ####
 Adafruit_SSD1306 display1(128, 64, &Wire, -1);
-Eye eye_left(display1);
+Eye eye_left(display1, 0x3C);
 Position_recognition_hand positionWatch;
 Speech speaker;
 
@@ -51,7 +51,7 @@ eye_left.reactToLight();
 lung.log_inflation();
 
 //#### Speech ####
-speaker.play(2,120000);
+speaker.play(1,120000);
 
 
 }
