@@ -7,12 +7,17 @@ Speech::Speech(){
 
 }
 
-void Speech::play(int track, int duration)
+void Speech::play(int track, unsigned long duration)
 {
-    if (millis() - timestamp > duration)
+    if (millis() - timeystamp > duration || firstTimePlay)
     {
-        this->mp3Player.play(track);
-  }
+       
+        timeystamp=millis();
+        //Serial.println("play");
+        this->mp3Player.play(track); 
+        firstTimePlay = false;
+   }
+
 }
 
 void Speech::init(){
