@@ -17,12 +17,13 @@ class Speech{
     //SoftwareSerial myoftwareSerial(mp3Player_rx, mp3Player_tx); // RX, TX  
     
 
-    int timestamp = 0;
+    unsigned long timeystamp = 0;
+    bool firstTimePlay = true;
 
     public:
     int track;
     Speech();
-    void play(int track, int duration);
+    void play(int track, unsigned long duration);
     void init();
 };
 #endif
