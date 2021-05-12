@@ -11,6 +11,7 @@ Adafruit_SSD1306 display1(128, 64, &Wire, -1);
 Eye eye_left(display1, 0x3C);
 Position_recognition_hand positionWatch;
 Speech speaker;
+Cpr cpr;
 
 //#### Lungs ####
 Lungs lung;
@@ -26,6 +27,7 @@ void setup() {
 
 //#### Heart ####
 positionWatch.init();
+cpr.init();
 //#### Lungs ####
 
 lung.setup();
@@ -46,12 +48,13 @@ void loop() {
 eye_left.reactToLight();
 
 //#### Heart ####
-//positionWatch.log_positionQuality();
+positionWatch.log_positionQuality();
+cpr.logCpr();
 //#### Lungs ####
 lung.log_inflation();
 
 //#### Speech ####
-speaker.play(1,120000);
+//speaker.play(1,100);
 
 
 }

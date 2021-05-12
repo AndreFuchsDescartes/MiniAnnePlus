@@ -49,4 +49,6 @@ void log_positionQuality();
 void init();
 
 };
+
 #endif 
+

@@ -16,6 +16,8 @@
 #define lung_inflation_input_pin A1;
 //Input pin to read analog voltage from ventilation sensor in face
 #define ventilation_input_pin A0;
+//Input pin to read analog voltage from cpr sensor
+#define cprInputPin A6;
 
 //#### Speech ####
 #define mp3Player_rx 11

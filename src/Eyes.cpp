@@ -91,8 +91,8 @@ void Eye::eyeSetup()
     if (!display.begin(SSD1306_SWITCHCAPVCC, this->i2cAdress))
     {
       Serial.println(F("SSD1306 allocation failed"));
-      for (;;)
-        ; // Don't proceed, loop forever
+      for (;;);
+         // Don't proceed, loop forever
     }
     display.clearDisplay();
     display.invertDisplay(true);

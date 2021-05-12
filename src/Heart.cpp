@@ -73,3 +73,4 @@ void Position_recognition_hand::init(){
     pinMode(pin_sensor2,INPUT);
 
 }
+
