@@ -20,7 +20,7 @@
 #define cprInputPin A6;
 
 //#### Speech ####
-#define mp3Player_rx 11
-#define mp3Player_tx 10  
+#define mp3Player_rx 19
+#define mp3Player_tx 18  
 
 #endif
