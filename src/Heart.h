@@ -23,8 +23,8 @@ bool handPosition_quality[handPosition_no_of_measurements];
 int handPosition_count =0;
 
 //timestamp used for timer
-int handPosition_millis_new=0;
-int handPosition_millis_old=0;
+unsigned long handPosition_millis_new=0;
+unsigned long handPosition_millis_old=0;
 
 int pin_sensor1 = position_recognition_hand_pin1;
 int pin_sensor2 = position_recognition_hand_pin2;

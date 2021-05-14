@@ -23,7 +23,7 @@ private:
   int pupilsize;
   int i2cAdress;
 
-  int timestamp=0;
+  unsigned long timestamp=0;
   int pupilposition=0;
 
  int lightsensor_left = lightsensor_pin_left;

@@ -58,7 +58,7 @@ void Position_recognition_hand::log_positionQuality (){
        bool result = compare_sensorsignals();
        save_handPosition(result);
       
-        Serial.print(F("Position average: "));   
+        Serial.print(F("pos"));   
         Serial.println(hand_rolling_average());
        
         handPosition_millis_old=handPosition_millis_new;

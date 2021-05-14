@@ -43,7 +43,7 @@ void Cpr::logCpr(){
         }
         
         
-        Serial.print(F("cpr average: ")); 
+        Serial.print(F("cpr")); 
         Serial.println(cpr_temp);
         
         
