@@ -94,6 +94,7 @@ void Eye::eyeSetup()
       for (;;);
          // Don't proceed, loop forever
     }
+    Serial.println(F("SSD1306 setup complete"));
     display.clearDisplay();
     display.invertDisplay(true);
     drawIris(iris_outer_diameter, iris_inner_diameter);

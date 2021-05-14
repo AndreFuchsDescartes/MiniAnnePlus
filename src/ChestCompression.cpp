@@ -42,8 +42,10 @@ void Cpr::logCpr(){
             cpr_temp = 0;
         }
         
-        Serial.print("cpr average: "); 
+        
+        Serial.print(F("cpr average: ")); 
         Serial.println(cpr_temp);
+        
         
         cpr_millis_old=cpr_millis_new;
 

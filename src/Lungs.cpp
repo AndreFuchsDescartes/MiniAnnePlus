@@ -52,7 +52,7 @@ void Lungs::log_inflation (){
             inflation_temp = 0;
         }
         
-        Serial.print("inflation average: "); 
+        Serial.print(F("inflation average: ")); 
         Serial.println(inflation_temp);
         
         //for testing purposes only. uncomment to see how much time elapses between reads.

@@ -54,7 +54,7 @@ cpr.logCpr();
 lung.log_inflation();
 
 //#### Speech ####
-//speaker.play(1,100);
+speaker.play(1,120000);
 
 
 }
