@@ -2,22 +2,22 @@
 #define ChestCompression_h
 // #### Settings CPR ####
 //controlls how many measurements of the cpr sensor are averaged together for the rolling average
-#define cpr_no_of_measurements 4
+#define cpr_no_of_measurements 3
 
 //time in ms for each measurement
 #define cpr_timestepp 100
 
 //caps cprValues at this value. Value between 0 and 1023. 0 is no reading 1023 is max reading.
-#define cpr_range 150
+#define cpr_range 1200
 
 //lung cpr values are multiplied with this value to amplify small readings
-#define cpr_amplification 4
+#define cpr_amplification 2
 
 //values mesured below this value are concidered 0. This check is done after amplification is applied.Value between 0 and 1023. 0 is no reading 1023 is max reading.
-#define cpr_lower_limit 20
+#define cpr_lower_limit 200
 
 //Limit of cpr. Values above this are concidered as "NO cpr is happening". Value between 0 and 1023. 1023 is no reading 0 is max reading.
-#define cpr_threshold 975
+#define cpr_threshold 980
 
 //Class for cpr measurements
 class Cpr

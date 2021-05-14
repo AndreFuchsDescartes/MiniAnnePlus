@@ -5,10 +5,10 @@
 
 // #### Settings ####
 //controlls how many measurements of the HandPosition
-#define handPosition_no_of_measurements 3
+#define handPosition_no_of_measurements 2
 
 //time in ms for each measurement
-#define handPosition_timestepp 50
+#define handPosition_timestepp 200
 
 
 class Position_recognition_hand
