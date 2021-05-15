@@ -26,9 +26,11 @@ private:
   unsigned long timestamp=0;
   int pupilposition=0;
 
- int lightsensor;
+ int lightsensor_thisEye;
+ int lightsensor_otherEye;
+
 public:
-  Eye(Adafruit_SSD1306 display, int adress, int lightsensor);
+  Eye(Adafruit_SSD1306 display, int adress, int lightsensor_thisEye, int lightsensor_otherEye);
 
   void drawIris(int irisOuter_D, int irisInner_D);
 
@@ -36,7 +38,7 @@ public:
 
   //void changePupilSize2(int new_pupilsize);
 
-  void reactToLight();
+  void reactToLight(bool brainWorking);
 
   void eyeSetup();
 };

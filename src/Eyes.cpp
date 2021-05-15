@@ -3,7 +3,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Eyes.h>
- Eye:: Eye(Adafruit_SSD1306 display, int adress, int lightsensor)
+ Eye:: Eye(Adafruit_SSD1306 display, int adress, int lightsensor_thisEye, int lightsensor_otherEye)
   {
     this->x_position = display.width() / 2;
     this->y_position = display.height() / 2;
@@ -12,7 +12,8 @@
     this->pupilsize = 0;
     this->display = display;
     this->i2cAdress=adress;
-    this->lightsensor = lightsensor;
+    this->lightsensor_thisEye = lightsensor_thisEye;
+    this->lightsensor_otherEye = lightsensor_otherEye;
   }
 
   void Eye::drawIris(int irisOuter_D, int irisInner_D)
@@ -24,33 +25,6 @@
       delay(1);
     }
   }
-
- /*void Eye::changePupilSize(int new_pupilsize)
-  {
-    int t = 100;
-    //compare pupilsizes to see, if it becomes larger or smaller
-    if (new_pupilsize > pupilsize)
-    {
-      //larger
-      for (int16_t i = pupilsize * 0.99; i < new_pupilsize; i += 1)
-      {
-        display.drawCircle(x_position, y_position, i, WHITE);
-        display.display();
-        delay(t);
-      }
-    }
-    else
-    {
-      //smaller
-      for (int16_t i = pupilsize; i-- > new_pupilsize;) //reverse for-loop
-      {
-        display.drawCircle(x_position, y_position, i, BLACK);
-        display.display();
-        delay(t);
-      }
-    }
-    pupilsize = new_pupilsize;
-  }*/
 
 void Eye::changePupilSize(int new_pupilsize){
   int time_trigger = 100;//s
@@ -73,11 +47,19 @@ void Eye::changePupilSize(int new_pupilsize){
   }   
 }
 
-void Eye::reactToLight(){
+void Eye::reactToLight(bool brainWorking){
   //read value from lightsensor
-  int lightvalue = analogRead(lightsensor);
+  int lightvalue = analogRead(lightsensor_thisEye);
+
+  //if brain works, both eyes react the same, so we read from the other lightsensor as well
+  //however, per default the variable will be set to a value that means that it does not recognize enaugh light to react
+ int lightvalue_otherEye=lightvalue_threshhold+1;
+  if(brainWorking){
+  lightvalue_otherEye=analogRead(lightsensor_otherEye);
+  }
+
   //if light is brighter than defined threshhold, change pupilsize
-  if(lightvalue < lightvalue_threshhold){
+  if(lightvalue < lightvalue_threshhold || lightvalue_otherEye < lightvalue_threshhold){
   this->changePupilSize(pupilsize_withlight);
   }else{
   this->changePupilSize(pupilsize_nolight);
@@ -86,7 +68,7 @@ void Eye::reactToLight(){
 
 void Eye::eyeSetup()
   {
-    pinMode(lightsensor,INPUT);
+    pinMode(lightsensor_thisEye,INPUT);
     //Serial.begin(9600);
     //Serial.println("begin setup");
     if (!display.begin(SSD1306_SWITCHCAPVCC, this->i2cAdress))

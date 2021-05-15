@@ -8,13 +8,14 @@
 
 //#### Eyes ####
 Adafruit_SSD1306 display1(128, 64, &Wire, -1);
-Eye eye_left(display1, 0x3C, lightsensor_pin_left);
+Eye eye_left(display1, 0x3C, lightsensor_pin_left, lightsensor_pin_right);
 Adafruit_SSD1306 display2(128, 64, &Wire, -1);
-Eye eye_right(display2, 0x3D, lightsensor_pin_right);
+Eye eye_right(display2, 0x3D, lightsensor_pin_right, lightsensor_pin_left);
 Position_recognition_hand positionWatch;
 Speech speaker;
 Cpr cpr;
 
+bool brain_works = true;
 //#### Lungs ####
 Lungs lung;
 
@@ -48,8 +49,8 @@ void loop() {
 //#### Chest-Compression ####
 
 //#### Eyes ####
-eye_left.reactToLight();
-eye_right.reactToLight();
+eye_left.reactToLight(brain_works);
+eye_right.reactToLight(brain_works);
 
 //#### Heart ####
 positionWatch.log_positionQuality();
