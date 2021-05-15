@@ -26,7 +26,7 @@ void setup() {
 
 //#### Eyes ####
  eye_left.eyeSetup();
- //eye_right.eyeSetup();
+ eye_right.eyeSetup();
 
 //#### Heart ####
 positionWatch.init();
@@ -49,7 +49,7 @@ void loop() {
 
 //#### Eyes ####
 eye_left.reactToLight();
-//eye_right.reactToLight();
+eye_right.reactToLight();
 
 //#### Heart ####
 positionWatch.log_positionQuality();
