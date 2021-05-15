@@ -3,7 +3,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Eyes.h>
- Eye:: Eye(Adafruit_SSD1306 display, int adress)
+ Eye:: Eye(Adafruit_SSD1306 display, int adress, int lightsensor)
   {
     this->x_position = display.width() / 2;
     this->y_position = display.height() / 2;
@@ -12,6 +12,7 @@
     this->pupilsize = 0;
     this->display = display;
     this->i2cAdress=adress;
+    this->lightsensor = lightsensor;
   }
 
   void Eye::drawIris(int irisOuter_D, int irisInner_D)
@@ -74,7 +75,7 @@ void Eye::changePupilSize(int new_pupilsize){
 
 void Eye::reactToLight(){
   //read value from lightsensor
-  int lightvalue = analogRead(lightsensor_left);
+  int lightvalue = analogRead(lightsensor);
   //if light is brighter than defined threshhold, change pupilsize
   if(lightvalue < lightvalue_threshhold){
   this->changePupilSize(pupilsize_withlight);
@@ -85,7 +86,7 @@ void Eye::reactToLight(){
 
 void Eye::eyeSetup()
   {
-    pinMode(lightsensor_left,INPUT);
+    pinMode(lightsensor,INPUT);
     //Serial.begin(9600);
     //Serial.println("begin setup");
     if (!display.begin(SSD1306_SWITCHCAPVCC, this->i2cAdress))

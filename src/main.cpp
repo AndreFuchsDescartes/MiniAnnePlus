@@ -8,9 +8,9 @@
 
 //#### Eyes ####
 Adafruit_SSD1306 display1(128, 64, &Wire, -1);
-Eye eye_left(display1, 0x3C);
+Eye eye_left(display1, 0x3C, lightsensor_pin_left);
 Adafruit_SSD1306 display2(128, 64, &Wire, -1);
-Eye eye_right(display2, 0x3D);
+Eye eye_right(display2, 0x3D, lightsensor_pin_right);
 Position_recognition_hand positionWatch;
 Speech speaker;
 Cpr cpr;

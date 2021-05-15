@@ -26,10 +26,9 @@ private:
   unsigned long timestamp=0;
   int pupilposition=0;
 
- int lightsensor_left = lightsensor_pin_left;
-
+ int lightsensor;
 public:
-  Eye(Adafruit_SSD1306 display, int adress);
+  Eye(Adafruit_SSD1306 display, int adress, int lightsensor);
 
   void drawIris(int irisOuter_D, int irisInner_D);
 
