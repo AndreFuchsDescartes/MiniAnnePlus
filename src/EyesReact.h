@@ -12,7 +12,6 @@ void eyes_React_init(){
 }
 
 void eyes_React(Eye &eye1, Eye &eye2){
-  Serial.println("start of eyes_React");
   //inputs from RPie
   bool bit0 = false;
   bool bit1 = false;
@@ -25,8 +24,6 @@ void eyes_React(Eye &eye1, Eye &eye2){
   
   //create case number from input
   int scenario =(int)bit0+ (int)bit1*2 + (int)bit2*4; 
-  Serial.print("scn");
-  Serial.println(scenario);
 
   //react according to scenario
   
@@ -78,8 +75,6 @@ void eyes_React(Eye &eye1, Eye &eye2){
     default:
     break;
   }
-      
-  Serial.println("end of eyes_React");
   
 }
 
