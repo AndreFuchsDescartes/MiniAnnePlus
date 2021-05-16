@@ -47,7 +47,7 @@ public:
   void eyeSetup();
 };
 
-void eyesReact(Eye eye1, Eye eye2){
+static void eyes_React(Eye eye1, Eye eye2){
   //inputs from RPie
   bool bit0, bit1, bit2;
   bit0=digitalRead(EyeBit0);
@@ -73,7 +73,7 @@ void eyesReact(Eye eye1, Eye eye2){
     break;
 
     case 2:
-    /* no reaction, fixed size */
+    /* no reaction, fixed size  */
     eye1.changePupilSize(pupilsize_normal);
     eye2.changePupilSize(pupilsize_normal);
     break;

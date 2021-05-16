@@ -48,7 +48,7 @@ void loop() {
 //#### Chest-Compression ####
 
 //#### Eyes ####
-eyesReact(eye_left,eye_right);
+eyes_React(eye_left,eye_right);
 
 //#### Heart ####
 positionWatch.log_positionQuality();
