@@ -47,22 +47,24 @@ void Eye::changePupilSize(int new_pupilsize){
   }   
 }
 
-void Eye::reactToLight(bool brainWorking){
-  //read value from lightsensor
-  int lightvalue = analogRead(lightsensor_thisEye);
+void Eye::reactToLight(bool both_eyes_react, bool this_lightsensor_works){
 
-  //if brain works, both eyes react the same, so we read from the other lightsensor as well
-  //however, per default the variable will be set to a value that means that it does not recognize enaugh light to react
- int lightvalue_otherEye=lightvalue_threshhold+1;
-  if(brainWorking){
-  lightvalue_otherEye=analogRead(lightsensor_otherEye);
+  int lightvalue_thisEye = 0;
+  if(this_lightsensor_works){
+    //read value from lightsensor
+    lightvalue_thisEye = analogRead(lightsensor_thisEye);
+  }else{
+    lightvalue_thisEye = lightvalue_threshhold+1; // = too big to trigger if-clause
   }
+  
+  //read value from other lightsensor
+  int lightvalue_otherEye =  analogRead(lightsensor_otherEye);
 
   //if light is brighter than defined threshhold, change pupilsize
-  if(lightvalue < lightvalue_threshhold || lightvalue_otherEye < lightvalue_threshhold){
+  if(lightvalue_thisEye < lightvalue_threshhold || lightvalue_otherEye < lightvalue_threshhold){
   this->changePupilSize(pupilsize_withlight);
   }else{
-  this->changePupilSize(pupilsize_nolight);
+  this->changePupilSize(pupilsize_normal);
   }
 }
 

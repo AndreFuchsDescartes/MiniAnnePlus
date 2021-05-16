@@ -15,7 +15,6 @@ Position_recognition_hand positionWatch;
 Speech speaker;
 
 
-bool brain_works = true;
 //#### Lungs ####
 
 
@@ -49,8 +48,7 @@ void loop() {
 //#### Chest-Compression ####
 
 //#### Eyes ####
-eye_left.reactToLight(brain_works);
-eye_right.reactToLight(brain_works);
+eyesReact(eye_left,eye_right);
 
 //#### Heart ####
 positionWatch.log_positionQuality();
