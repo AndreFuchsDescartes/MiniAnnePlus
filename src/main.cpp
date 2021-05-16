@@ -4,6 +4,7 @@
 #include <Heart.h>
 #include <Lungs.h>
 #include <Speech.h>
+#include <EyesReact.h>
 
 
 //#### Eyes ####
@@ -22,11 +23,13 @@ Speech speaker;
 //____________SETUP________________________________________________________
 void setup() {
   Serial.begin(baudrate);
+  Serial.println("start of setup");
 //#### Chest-Compression ####
 
 //#### Eyes ####
  eye_left.eyeSetup();
  eye_right.eyeSetup();
+ eyes_React_init();
 
 //#### Heart ####
 positionWatch.init();
@@ -39,7 +42,7 @@ lungs_setup();
 //#### Speech ####
 speaker.init();
 
-
+Serial.println("end of setup");
 }
 
 
@@ -57,8 +60,9 @@ cpr_logCpr();
 lungs_log_inflation();
 
 //#### Speech ####
-speaker.play(1,120000);
-
+//speaker.play(1,120000);
 
 }
+
+
 

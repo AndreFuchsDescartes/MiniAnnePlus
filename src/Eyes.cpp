@@ -18,6 +18,7 @@
 
   void Eye::drawIris(int irisOuter_D, int irisInner_D)
   {
+    Serial.println("eyes drawIris");
     for (int16_t i = irisInner_D; i < irisOuter_D; i += 1)
     {
       display.drawCircle(x_position, y_position, i, WHITE);
@@ -27,7 +28,8 @@
   }
 
 void Eye::changePupilSize(int new_pupilsize){
-  int time_trigger = 100;//s
+  Serial.println("eyes changePupilSize");
+  int time_trigger = 100;//ms
   if (new_pupilsize > pupilsize){
     //make larger
     if (millis()-timestamp > time_trigger && pupilsize < new_pupilsize){
@@ -48,7 +50,7 @@ void Eye::changePupilSize(int new_pupilsize){
 }
 
 void Eye::reactToLight(bool both_eyes_react, bool this_lightsensor_works){
-
+  Serial.println("eyes reactToLight");
   int lightvalue_thisEye = 0;
   if(this_lightsensor_works){
     //read value from lightsensor

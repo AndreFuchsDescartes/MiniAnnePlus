@@ -8,9 +8,9 @@
 #define lightsensor_pin_left A2
 #define lightsensor_pin_right A3
 //input from RPie to controll Eyes
-#define EyeBit0 2
-#define EyeBit1 3
-#define EyeBit2 4
+#define EyeBit0 22
+#define EyeBit1 24
+#define EyeBit2 26
 //#### Heart ####
 #define position_recognition_hand_pin1 7
 #define position_recognition_hand_pin2 8
