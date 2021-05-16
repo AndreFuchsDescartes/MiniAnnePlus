@@ -10,10 +10,10 @@
 //the lower the value, the brighter the light
 #define lightvalue_threshhold 300
 #define pupilsize_normal 15
-#define pupilsize_withlight 5
+#define pupilsize_withlight 10
 
-#define pupilsize_small 3
-#define pupilsize_big 20
+#define pupilsize_small 5
+#define pupilsize_big 25
 
 
 class Eye
@@ -42,7 +42,7 @@ public:
 
   //void changePupilSize2(int new_pupilsize);
 
-  void reactToLight(bool both_eyes_react, bool this_lightsensor_works);
+  void reactToLight(bool both_eyes_react, bool this_lightsensor_works, bool other_lightsensor_works);
 
   void eyeSetup();
 };

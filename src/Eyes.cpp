@@ -49,7 +49,7 @@ void Eye::changePupilSize(int new_pupilsize){
   }   
 }
 
-void Eye::reactToLight(bool both_eyes_react, bool this_lightsensor_works){
+void Eye::reactToLight(bool both_eyes_react, bool this_lightsensor_works, bool other_lightsensor_works){
   Serial.println("eyes reactToLight");
   int lightvalue_thisEye = 0;
   if(this_lightsensor_works){
@@ -60,8 +60,13 @@ void Eye::reactToLight(bool both_eyes_react, bool this_lightsensor_works){
   }
   
   //read value from other lightsensor
-  int lightvalue_otherEye =  analogRead(lightsensor_otherEye);
-
+  int lightvalue_otherEye =0;
+  if(other_lightsensor_works){
+    //read value from lightsensor
+    lightvalue_otherEye = analogRead(lightsensor_otherEye);
+  }else{
+    lightvalue_otherEye = lightvalue_threshhold+1; // = too big to trigger if-clause
+  }
   //if light is brighter than defined threshhold, change pupilsize
   if(lightvalue_thisEye < lightvalue_threshhold || lightvalue_otherEye < lightvalue_threshhold){
   this->changePupilSize(pupilsize_withlight);

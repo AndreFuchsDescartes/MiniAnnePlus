@@ -34,8 +34,8 @@ void eyes_React(Eye &eye1, Eye &eye2){
   {
   case 0:
     // both eyes work properly 
-    eye1.reactToLight(true,true);
-    eye2.reactToLight(true,true);
+    eye1.reactToLight(true,true,true);
+    eye2.reactToLight(true,true,true);
     break;
 
   case 1:
@@ -64,14 +64,14 @@ void eyes_React(Eye &eye1, Eye &eye2){
 
     case 5:
     // only one eye reacts, both lightsensors work 
-    eye1.reactToLight(true,true);
+    eye1.reactToLight(true,true,true);
     eye2.changePupilSize(pupilsize_normal);
     break;
 
     case 6:
     // both eyes react, only one lightsensor works 
-    eye1.reactToLight(true,false);
-    eye2.reactToLight(true,true);
+    eye1.reactToLight(true,false,true);
+    eye2.reactToLight(true,true,false);
     break;
     
 
