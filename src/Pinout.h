@@ -26,5 +26,6 @@
 //#### Speech ####
 #define mp3Player_rx 10
 #define mp3Player_tx 11  
+#define mp3Player_on 28
 
 #endif

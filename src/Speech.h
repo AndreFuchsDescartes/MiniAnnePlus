@@ -7,12 +7,16 @@
 
 
 #define speach_volume 23
+#define mp3Timestepp 1000
 
 //audiotrack list
 #define track_rickroll 1
 
 class Speech{
     private:
+    bool mp3Running;
+    unsigned long mp3MillisOld;
+    unsigned long mp3MillisNew;
     DFRobotDFPlayerMini mp3Player;
     //SoftwareSerial myoftwareSerial(mp3Player_rx, mp3Player_tx); // RX, TX  
     

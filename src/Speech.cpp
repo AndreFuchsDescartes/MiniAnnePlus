@@ -9,19 +9,46 @@ Speech::Speech(){
 
 void Speech::play(int track, unsigned long duration)
 {
-    if (millis() - timeystamp > duration || firstTimePlay)
+  mp3MillisNew=millis();
+  //cheking if timestepp has elapsed
+  if (mp3MillisNew-mp3MillisOld>mp3Timestepp)
+  {
+    //checking if it should be running
+    if (digitalRead(mp3Player_on))
+  {
+    //cheking if song is over and need to be restarted
+    if (millis() - timeystamp > duration || firstTimePlay||!mp3Running)
     {
-       
+
         timeystamp=millis();
         //Serial.println("play");
         this->mp3Player.play(track); 
         firstTimePlay = false;
+        mp3Running=true;
+        
    }
+  }else{
+    //cheking if mp3 is running. if yes turn off
+    if (mp3Running)
+    {
+      this->mp3Player.stop();
+      mp3Running=false;
+    }
+    
+    
+  }
+  mp3MillisOld=mp3MillisNew;
+  }
+  
+  
 
 }
 
 void Speech::init(){
-    SoftwareSerial mySoftwareSerial(mp3Player_rx, mp3Player_tx); // RX, TX
+  SoftwareSerial mySoftwareSerial(mp3Player_rx, mp3Player_tx); // RX, TX
+  mp3Running = false;
+  mp3MillisNew= millis();
+  mp3MillisOld=mp3MillisNew;
 
   mySoftwareSerial.begin(9600);
  // Serial.begin(9600);
