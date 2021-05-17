@@ -23,6 +23,9 @@
 //Limit of cpr. Values above this are concidered as "NO cpr is happening". Value between 0 and 1023. 1023 is no reading 0 is max reading.
 #define cpr_threshold 1023
 
+//time in ms that gets captured in frequencyArray[], used to calculate size of frequencyArray[]
+#define frequencyArray_time 2500
+
 
     //Analog voltages from CPR sensor in chest
     int cprValues[cpr_no_of_measurements]; 
@@ -36,6 +39,13 @@
     unsigned long cpr_millis_new;
     //used to save cpr rolling average
     int cprRollingAverage;
+    //Size for frequency measurement
+    const int frequencyArraySize = frequencyArray_time/cpr_timestepp+1;
+    //array for frequency measurement
+    int frequencyArray [frequencyArraySize];
+    //current position in the frequency arry
+    int frequencyArray_counter=0;
+
 
 
 //Initialises CPR object
@@ -123,12 +133,59 @@ void cpr_logCpr(){
         
         cprRollingAverage=cpr_temp;
         cpr_millis_old=cpr_millis_new;
-
+        schmittTrigger();
         
     }
     else{
 
     }
+}
+int measureFrequency(){
+    int frequency = 0;//hz
 
+    int number_fallingEdges=0;
+
+    int n1 = 0;
+    int n2 = 0;
+    bool found = false;
+    for (size_t i = 0; i < frequencyArraySize-1; i++)
+    {
+        if(frequencyArray[i]==1 && frequencyArray[i+1]==0){
+           if(!found){
+            n1 = i;
+            found = true;
+           }else{
+            n2 = i;
+            found = false;
+           }
+        }
+    }
+    
+
+    return frequency;
+}
+
+void schmittTrigger(){
+    int schmittMedian = ((1/3)*cpr_range); 
+    int schmittDeviation = cpr_range /10;
+    int schmittUpper = schmittMedian + schmittDeviation;
+    int schmittLower = schmittMedian - schmittDeviation;
+
+    if(cprRollingAverage > schmittUpper){
+        frequencyArray[frequencyArray_counter] = 1;
+
+    }else if(cprRollingAverage < schmittLower){
+        frequencyArray[frequencyArray_counter] = 0;
+
+    }else{
+        if(frequencyArray_counter > 0){
+        frequencyArray[frequencyArray_counter] = frequencyArray[(frequencyArray_counter-1)];
+        }else{
+        frequencyArray[frequencyArray_counter] =0;    
+        }
+        
+    }
+
+    frequencyArray_counter++;
 }
 #endif
