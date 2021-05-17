@@ -122,10 +122,6 @@ void cpr_logCpr(){
         }
         
         cprRollingAverage=cpr_temp;
-        Serial.print(F("cpr")); 
-        Serial.println(cprRollingAverage);
-        
-        
         cpr_millis_old=cpr_millis_new;
 
         

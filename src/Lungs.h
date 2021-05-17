@@ -33,6 +33,8 @@ unsigned long lung_millis_old;
 unsigned long lung_millis_new;
 //Int variable for analog read from lung inflation sensor
 int lung_inflation_input;
+//used to store inflation value
+int inf;
     
     
 
@@ -118,9 +120,7 @@ void lungs_log_inflation (){
         {
             inflation_temp = 0;
         }
-        
-        Serial.print(F("inf")); 
-        Serial.println(inflation_temp);
+        inf=inflation_temp;
         lung_millis_old=lung_millis_new;
 
         
