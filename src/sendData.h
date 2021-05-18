@@ -41,7 +41,7 @@ void sendData(){
 
         //Print Data for Frequency
         Serial.print(F("hz")); 
-        Serial.print(0);
+        Serial.print(frequency);
         Serial.print(F(","));
 
         //line break
