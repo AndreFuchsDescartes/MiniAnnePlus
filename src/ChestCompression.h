@@ -170,7 +170,12 @@ void measureFrequency(){
     waveDuration = waveDuration/counter;
 
     //calculate frequency
+    if(waveDuration!=0)
+    {
     frequency = 1/ waveDuration;
+    }else{
+    frequency = 0;
+    }
 }
 
 
