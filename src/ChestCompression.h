@@ -54,10 +54,6 @@
     //stores individual durations of squarewaves from the cpr_output
     int time_Storage [frequencyArraySize/2];
     int counter = 0;
-    int debug1;
-    double debug2;
-    double debug3;
-    double debug4;
 
 void reset_frequencyArrays(){
     //fill timeStorage with 0s
@@ -171,11 +167,9 @@ void measureFrequency(){
     }
     
     //calculate frequency
-    debug2=waveDuration;
     if(waveDuration!=0)
     {
         waveDuration = waveDuration/counter;
-        debug3=waveDuration;
         //convert to seconds
         waveDuration=waveDuration/1000;
         frequency = 1.0/ waveDuration;
@@ -195,8 +189,6 @@ void convertCprToBinary(){
     }else {
         frequencyArray[frequencyArray_counter] = 0;
     }
-
-    debug1=frequencyArray[frequencyArray_counter];
 
     frequencyArray_counter++;
 
