@@ -44,6 +44,20 @@ void sendData(){
         Serial.print(frequency);
         Serial.print(F(","));
 
+        //Print Data for debugging
+        Serial.print(F("binary")); 
+        Serial.print(debug1);
+        Serial.print(F(","));
+        Serial.print(F("waveDurationTotsl")); 
+        Serial.print(debug2);
+        Serial.print(F(","));
+        Serial.print(F("waveDuration")); 
+        Serial.print(debug3);
+        Serial.print(F(","));
+        Serial.print(F("debug")); 
+        Serial.print(debug4);
+        Serial.print(F(","));
+
         //line break
         Serial.println();
         //resetting millis

@@ -12,7 +12,7 @@
 #define cpr_timestepp 100
 
 //caps cprValues at this value. Value between 0 and 1023. 0 is no reading 1023 is max reading.
-#define cpr_range 1200
+#define cpr_range 1000
 
 //lung cpr values are multiplied with this value to amplify small readings
 #define cpr_amplification 2
@@ -54,8 +54,18 @@
     //stores individual durations of squarewaves from the cpr_output
     int time_Storage [frequencyArraySize/2];
     int counter = 0;
+    int debug1;
+    double debug2;
+    double debug3;
+    double debug4;
 
-void reset_frequencyArray(){
+void reset_frequencyArrays(){
+    //fill timeStorage with 0s
+    for (size_t i = 0; i < frequencyArraySize/2; i++)
+    {
+        time_Storage[i] = 0;
+    }
+    //resetting frequencyArray
     for (size_t i = 0; i < frequencyArraySize; i++)
     {
         frequencyArray[i]=0;
@@ -76,7 +86,7 @@ void cpr_init(){
     {
         cprValues[i]=0;
     }
-    reset_frequencyArray();
+    reset_frequencyArrays();
 }
 
 
@@ -125,13 +135,6 @@ int cpr_read(int input){
 }
 
 void measureFrequency(){
-
-    //fill timeStorage with 0s
-    for (size_t i = 0; i < frequencyArraySize/2; i++)
-    {
-        time_Storage[i] = 0;
-    }
-
     int n1 = 0;
     int n2 = 0;
     bool found = false;
@@ -144,7 +147,7 @@ void measureFrequency(){
            if(!found){
             n1 = i;
             if(n2!=0){
-            time_Storage[counter] = (n1-n2)*cpr_timestepp;
+            time_Storage[counter] = ((n1-n2)*cpr_timestepp)+1;
             counter++;
             }
             
@@ -152,7 +155,7 @@ void measureFrequency(){
            }else{
             n2 = i;
 
-            time_Storage[counter] = (n2-n1)*cpr_timestepp;
+            time_Storage[counter] = ((n2-n1)*cpr_timestepp)+1;
             counter++;
 
             found = false;
@@ -166,48 +169,43 @@ void measureFrequency(){
     {
         waveDuration = waveDuration + time_Storage[i];
     }
-
-    waveDuration = waveDuration/counter;
-
+    
     //calculate frequency
+    debug2=waveDuration;
     if(waveDuration!=0)
     {
-    frequency = 1/ waveDuration;
+        waveDuration = waveDuration/counter;
+        debug3=waveDuration;
+        //convert to seconds
+        waveDuration=waveDuration/1000;
+        frequency = 1.0/ waveDuration;
     }else{
-    frequency = 0;
+    frequency = 0.0;
     }
+    counter=0;
 }
 
 
-void schmittTrigger(){
-    int schmittMedian = ((1/3)*cpr_range); 
-    int schmittDeviation = cpr_range /10;
-    int schmittUpper = schmittMedian + schmittDeviation;
-    int schmittLower = schmittMedian - schmittDeviation;
+void convertCprToBinary(){
+    int schmittMedian = cpr_range/2;
 
-    if(cprRollingAverage > schmittUpper){
+    if(cprRollingAverage > schmittMedian){
         frequencyArray[frequencyArray_counter] = 1;
 
-    }else if(cprRollingAverage < schmittLower){
+    }else {
         frequencyArray[frequencyArray_counter] = 0;
-
-    }else{
-        if(frequencyArray_counter > 0){
-        frequencyArray[frequencyArray_counter] = frequencyArray[(frequencyArray_counter-1)];
-        }else{
-        frequencyArray[frequencyArray_counter] =0;    
-        }
-        
     }
+
+    debug1=frequencyArray[frequencyArray_counter];
 
     frequencyArray_counter++;
 
     if(frequencyArray_counter==frequencyArraySize){
         measureFrequency();
-        reset_frequencyArray();
+        reset_frequencyArrays();
         frequencyArray_counter = 0;
+        Serial.println();
     }
-
 
 }
 
@@ -235,7 +233,7 @@ void cpr_logCpr(){
         
         cprRollingAverage=cpr_temp;
         cpr_millis_old=cpr_millis_new;
-        schmittTrigger();
+        convertCprToBinary();
     }
     else{
 
