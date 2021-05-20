@@ -13,7 +13,7 @@ Adafruit_SSD1306 display1(128, 64, &Wire, -1);
 Eye eye_left(display1, 0x3C, lightsensor_pin_left, lightsensor_pin_right);
 Adafruit_SSD1306 display2(128, 64, &Wire, -1);
 Eye eye_right(display2, 0x3D, lightsensor_pin_right, lightsensor_pin_left);
-Speech speaker;
+
 
 
 //#### Lungs ####
@@ -40,7 +40,7 @@ lungs_setup();
 
 
 //#### Speech ####
-speaker.init();
+speechInit();
 
 Serial.println("end of setup");
 
@@ -63,7 +63,7 @@ cpr_logCpr();
 lungs_log_inflation();
 
 //#### Speech ####
-speaker.play(1,120000);
+play(1,7000);
 
 //#### Send Data ####
 sendData();

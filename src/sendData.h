@@ -47,8 +47,6 @@ void sendData(){
         dataPacket+=frequency;
         dataPacket+=F(",");
 
-    
-
         //line break
         Serial.println(dataPacket);
         dataPacket="";

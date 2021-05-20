@@ -196,7 +196,7 @@ void convertCprToBinary(){
         measureFrequency();
         reset_frequencyArrays();
         frequencyArray_counter = 0;
-        Serial.println();
+        
     }
 
 }
