@@ -13,9 +13,9 @@
 //controlls how many measurements of the lung are averaged to gether to smooth out signal. The time between measurements is set with lung_timestepp
 #define lung_no_of_measurements 3
 //caps lung_inflation at this value. Value between 0 and 1023. 0 is no reading 1023 is max reading.
-#define inflation_range 500
+#define inflation_range 600
 //lung inflation values are multiplied with this value to amplify small readings
-#define inflation_amplification 3
+#define inflation_amplification 2
 //values mesured below this value are concidered 0. This check is done after amplification is applied.Value between 0 and 1023. 0 is no reading 1023 is max reading.
 #define inflation_lower_limit 30
 
@@ -108,7 +108,7 @@ void lungs_log_inflation (){
     if (lung_millis_new - lung_millis_old>= lung_timestepp)
     {
         cpr_temp=cprRollingAverage;
-            if (cpr_temp==0 )
+            if (!digitalRead(position_recognition_hand_pin1)&&!digitalRead(position_recognition_hand_pin2) )
             {
                 lungs_save_inflation(lungs_read_inflation());
             }   

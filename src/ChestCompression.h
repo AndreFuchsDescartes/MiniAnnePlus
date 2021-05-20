@@ -9,16 +9,16 @@
 #define cpr_no_of_measurements 3
 
 //time in ms for each measurement
-#define cpr_timestepp 100
+#define cpr_timestepp 50
 
 //caps cprValues at this value. Value between 0 and 1023. 0 is no reading 1023 is max reading.
-#define cpr_range 1000
+#define cpr_range 600
 
 //lung cpr values are multiplied with this value to amplify small readings
 #define cpr_amplification 2
 
 //values mesured below this value are concidered 0. This check is done after amplification is applied.Value between 0 and 1023. 0 is no reading 1023 is max reading.
-#define cpr_lower_limit 20
+#define cpr_lower_limit 18
 
 //Limit of cpr. Values above this are concidered as "NO cpr is happening". Value between 0 and 1023. 1023 is no reading 0 is max reading.
 #define cpr_threshold 1023
@@ -181,7 +181,7 @@ void measureFrequency(){
 
 
 void convertCprToBinary(){
-    int schmittMedian = cpr_range/2;
+    int schmittMedian = cpr_range/3;
 
     if(cprRollingAverage > schmittMedian){
         frequencyArray[frequencyArray_counter] = 1;

@@ -9,6 +9,8 @@
 
 //defines time between data packets. has to be equal or lower than smallest timestepp of functions that have data sent this way
 #define sendDataTimestep 100
+//used to storre data so it can be sent in one go
+String dataPacket;
 
 //timestamps for sending data
 unsigned long sendDataMilisNew;
@@ -24,28 +26,32 @@ void sendData(){
     sendDataMilisNew=millis();
     if (sendDataMilisNew-sendDataMilisOld>= sendDataTimestep)
     {
+        
         //Print Data for Lungs
-        Serial.print(F("inf")); 
-        Serial.print(inf);
-        Serial.print(F(","));
-
+        dataPacket+=F("inf"); 
+        dataPacket+=inf;
+        dataPacket+=F(",");
+    
         ///Print Data for Chest Compression
-        Serial.print(F("cpr")); 
-        Serial.print(cprRollingAverage);
-        Serial.print(F(","));
+        dataPacket+=F("cpr"); 
+        dataPacket+=cprRollingAverage;
+        dataPacket+=F(",");
 
         //Print Data for Hand Position
-        Serial.print(F("pos")); 
-        Serial.print(posAverage);
-        Serial.print(F(","));
+        dataPacket+=F("pos"); 
+        dataPacket+=posAverage;
+        dataPacket+=F(",");
 
         //Print Data for Frequency
-        Serial.print(F("hz")); 
-        Serial.print(frequency);
-        Serial.print(F(","));
+        dataPacket+=F("hz"); 
+        dataPacket+=frequency;
+        dataPacket+=F(",");
+
+    
 
         //line break
-        Serial.println();
+        Serial.println(dataPacket);
+        dataPacket="";
         //resetting millis
         sendDataMilisOld=sendDataMilisNew;
     }
