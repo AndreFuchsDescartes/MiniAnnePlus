@@ -63,7 +63,7 @@ cpr_logCpr();
 lungs_log_inflation();
 
 //#### Speech ####
-play(1,7000);
+play(1,125000);
 
 //#### Send Data ####
 sendData();

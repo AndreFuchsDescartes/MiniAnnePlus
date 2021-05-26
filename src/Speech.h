@@ -32,7 +32,6 @@ void play(int track, unsigned long duration)
         //cheking if song has ended
         if (mp3MillisNew-timeStamp>duration||!mp3Running)
         {
-            
             mp3Player.play(1);
             Serial.println("started mp3 ");
             mp3Running=true;

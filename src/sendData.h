@@ -22,35 +22,40 @@ void sendDataInit(){
 }
 //used to write data to serial monitor in an orderley fashion data is preceeded by an identifier and separated by a , Example: pos1,inf50
 
+
 void sendData(){
     sendDataMilisNew=millis();
     if (sendDataMilisNew-sendDataMilisOld>= sendDataTimestep)
-    {
+    {/**/
         
         //Print Data for Lungs
-        dataPacket+=F("inf"); 
-        dataPacket+=inf;
-        dataPacket+=F(",");
-    
+        Serial.print(F("inf")); 
+        Serial.print(inf);
+        Serial.print(F(","));
+        
         ///Print Data for Chest Compression
-        dataPacket+=F("cpr"); 
-        dataPacket+=cprRollingAverage;
-        dataPacket+=F(",");
+        Serial.print(F("cpr")); 
+        Serial.print(cprRollingAverage);
+        Serial.print(F(","));
+        
 
         //Print Data for Hand Position
-        dataPacket+=F("pos"); 
-        dataPacket+=posAverage;
-        dataPacket+=F(",");
+        Serial.print(F("pos")); 
+        Serial.print(posAverage);
+        Serial.print(F(","));
 
         //Print Data for Frequency
-        dataPacket+=F("hz"); 
-        dataPacket+=frequency;
-        dataPacket+=F(",");
+        Serial.print(F("hz")); 
+        Serial.print(frequency);
+        Serial.print(F(","));
 
         //line break
-        Serial.println(dataPacket);
+        //Serial.println(dataPacket);
         dataPacket="";
         //resetting millis
+
+        
+        Serial.println();
         sendDataMilisOld=sendDataMilisNew;
     }
     
