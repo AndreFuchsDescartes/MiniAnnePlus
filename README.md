@@ -128,12 +128,12 @@ Just secure al the wires with some tape. Where they exit Mini Anne you can wrap 
 We recommend using [PlatformIO]( https://platformio.org/) with [Microsoft Visual Studio Code](https://code.visualstudio.com/) to upload all your code as it can handle all the different microcontrollers used in this project that need to be programmed. A tutorial for setting this up can be found [here.]( https://www.youtube.com/watch?v=0poh_2rBq7E&t=1s)
 
 Upload the code from this repo to the Arduino Mega2560.
-The code for the ESP32 can be found [here]()
+The code for the ESP32 can be found [here](https://github.com/Gladius-Illuminatus/MiniAnneWiFi)
 A copy of our RPi setup can be found [here]()
 Copy this image onto your SD card using [Win32Disk Imager](https://sourceforge.net/projects/win32diskimager/files/latest/download)
 
 Connect your controllers to the power bank with the USB hub. Connect the Arduino directly to the Pi.
-After plugin in the power bank and waiting for About 2min you should now see a new WiFi appear called “miniannewifi”. Its password is **Insert password here!!**
+After plugin in the power bank and waiting for About 2min you should now see a new WiFi appear called “miniannewifi”. Its password is "MiniAnne2.0"
 After connecting you can go to either:
 192.168.42.2:1880/ui 
 or
