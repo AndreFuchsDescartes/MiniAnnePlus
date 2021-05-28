@@ -93,6 +93,8 @@ You will need:
 ### How to wire it all up
 To connect it all you can follow the schematics provided below. We recommend first building it all on a breadboard and then making a final version on the Arduino Mega shield. All wires should be directly soldered on the final version if possible. This way you avoid unnecessary trouble due to lose or fallen off wires. To safely house the electronics, you will also need any suitable box of your own choosing. It should be approximately 230x160x80mm.
 
+![Overview](https://user-images.githubusercontent.com/58589488/119912812-75d93e00-bf5c-11eb-84e9-627a8b0350b6.jpg)
+
 ![Pi Zero_bb](https://user-images.githubusercontent.com/58589488/119737575-caf35200-be7f-11eb-870f-fa5bd619f23a.png)
 
 ![Eyes_bb](https://user-images.githubusercontent.com/58589488/119737543-be6ef980-be7f-11eb-90b9-a920604eab2b.png)
