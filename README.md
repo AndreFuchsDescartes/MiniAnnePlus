@@ -1,10 +1,10 @@
-# Hello and welcome to the Mini Anne Plus GitHub
+# Hello and welcome to the Mini Anne 2.0 GitHub
 
 This Project was created as an entry for the 2021 [Trinatronics]( https://www.trirhenatech.eu/lehre/Trinatronics/)  competition.
 
 Our projects aim was to create a low-cost open-source alternative to more expensive commercial CPR dolls. These dolls can be fantastic tools to teach what needs to be done in an emergency. More advanced models feature sensors to provide feedback to the user and can tell you what you need to improve. 
 Traditionally however such devices have been too expensive to be widely used. 
-In response to this need the company Laerdal created a low cost low tec CPR doll called [Mini Anne Plus]( https://laerdal.com/products/simulation-training/resuscitation-training/mini-anne-plus/). At a unit cost of only around 40EUR Mini Anne Plus brings CPR training to the masses. 
+In response to this need the company Laerdal created a low cost low tec CPR doll called [Mini Anne 2.0]( https://laerdal.com/products/simulation-training/resuscitation-training/mini-anne-plus/). At a unit cost of only around 40EUR Mini Anne Plus brings CPR training to the masses. 
 
 There is however a caveat. 
 Whilst Mini Anne Plus can be used to do CPR training, she is very basic. If you want to train more than just the basics or want simple feedback how well you are performing you won’t get it here. And even worse the “next step up” so to speak costs more than 8x as much. A price that is usually not affordable for those places that really would need access to these kinds of devices. 
